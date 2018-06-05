@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "320044776430",
+    "firebase_url": "https://apliviajes.firebaseio.com",
+    "project_id": "apliviajes",
+    "storage_bucket": "apliviajes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320044776430:android:ec51b0738abee33c",
+        "android_client_info": {
+          "package_name": "net.victor.apkviajes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320044776430-kov711ufu23fvp3fulbs5jhq6cae257q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.victor.apkviajes",
+            "certificate_hash": "4331427dfe8063d761a9ea3deda37bcec363eb98"
+          }
+        },
+        {
+          "client_id": "320044776430-lgqn4nrr252qlmvvlik4ks0uc332pkoi.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "320044776430-lgqn4nrr252qlmvvlik4ks0uc332pkoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0HVNbuhHW38f-UVXHiggDkuWU_P738zE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320044776430-lgqn4nrr252qlmvvlik4ks0uc332pkoi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
