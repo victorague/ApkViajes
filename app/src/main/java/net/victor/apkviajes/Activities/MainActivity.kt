@@ -44,8 +44,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         nav_view.setNavigationItemSelectedListener(this)
 
         btnNuevoViaje.setOnClickListener{
-            val intent = Intent(this , NuevoViajeActivity::class.java)
-            startActivity(intent)
+            if(mAuth.currentUser != null){
+                val intent = Intent(this , NuevoViajeActivity::class.java)
+                startActivity(intent)
+            }else{
+                toast("¡Debes estar registrado para poder crear tu propio viaje!")
+            }
+
         }
 
 
