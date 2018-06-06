@@ -16,6 +16,7 @@ import org.jetbrains.anko.toast
 import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
+import net.victor.apkviajes.Activities.NuevoViajeActivity
 import org.jetbrains.anko.alert
 
 
@@ -41,6 +42,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        btnNuevoViaje.setOnClickListener{
+            val intent = Intent(this , NuevoViajeActivity::class.java)
+            startActivity(intent)
+        }
 
 
 
