@@ -1,6 +1,7 @@
-package net.victor.apkviajes.Activities
+package net.victor.apkviajes.Activities.Views
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -12,8 +13,10 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_nuevo_viaje.*
 import net.victor.apkviajes.Activities.model.Viaje
 import net.victor.apkviajes.R
-import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
+import android.widget.DatePicker
+
+
 
 
 class NuevoViajeActivity : AppCompatActivity() {
@@ -51,6 +54,27 @@ class NuevoViajeActivity : AppCompatActivity() {
         btnEmpezarViaje.setOnClickListener {
             toast("Rellena todos los camposy elige ubicacion")
         }
+
+        btnFechaInicio.setOnClickListener{
+            val builder = AlertDialog.Builder(this)
+            val picker = DatePicker(this)
+
+            builder.setTitle("Fecha Inicio")
+            builder.setView(picker)
+            builder.setNegativeButton("Cancel", null)
+            builder.setPositiveButton("Set", null)
+
+            builder.show()
+            val dia = picker.dayOfMonth
+            val mes = picker.month
+            val anyo = picker.year
+
+            viaje.fechaInicio = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
+            tvFecha.text = viaje.fechaInicio
+        }
+
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -78,7 +102,7 @@ class NuevoViajeActivity : AppCompatActivity() {
 
 
         btnEmpezarViaje.setOnClickListener {
-            if(viaje.descripcion != "" && viaje.lugar != "" &&  viaje.latitud != "" && viaje.longitud != "") /*SOlo latitud porque siempre coge al mismo timepo longitud y latitud)*/{
+            if(viaje.descripcion != "" && viaje.lugar != "" &&  viaje.latitud != "" && viaje.longitud != "" && viaje.fechaInicio != "") /*SOlo latitud porque siempre coge al mismo timepo longitud y latitud)*/{
                 // Add a new document with a generated ID
                 db.collection("viajes")
                         .add(viaje)

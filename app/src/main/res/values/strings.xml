@@ -22,4 +22,5 @@
     </string>
     <string name="title_activity_register">Register</string>
     <string name="title_activity_nuevo_viaje">NuevoViajeActivity</string>
+    <string name="title_activity_mis_viajes">MisViajesActivity</string>
 </resources>
