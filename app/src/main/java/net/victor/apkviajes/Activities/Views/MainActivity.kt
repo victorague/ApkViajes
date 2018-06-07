@@ -14,7 +14,9 @@ import org.jetbrains.anko.toast
 import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
+import net.victor.apkviajes.Activities.Views.MisViajesActivity
 import net.victor.apkviajes.Activities.Views.NuevoViajeActivity
+import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
 import org.jetbrains.anko.alert
 
 
@@ -51,9 +53,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
         }
 
-        btnNuevoViaje.setOnClickListener {
+        btnMisViajes.setOnClickListener {
             if (mAuth.currentUser != null) {
-                val intent = Intent(this, NuevoViajeActivity::class.java)
+                val intent = Intent(this, MisViajesActivity::class.java)
                 startActivity(intent)
             } else {
                 toast("¡Debes estar regitrado para poder crear y ver tus viajes!")
