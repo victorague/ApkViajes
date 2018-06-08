@@ -46,7 +46,13 @@
         <activity
             android:name=".Activities.Views.MisViajesActivity"
             android:label="@string/title_activity_mis_viajes"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+
+            />
+        <activity android:name=".Activities.Views.EventosViajesActivity" />
+        <activity android:name=".Activities.Views.NuevoEventoActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
     </application>
 
 </manifest>

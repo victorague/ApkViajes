@@ -39,6 +39,7 @@ class NuevoViajeActivity : AppCompatActivity() {
         viaje.descripcion = inputDescripcionViaje.text.toString()
 
 
+
         btnUbicacion.setOnClickListener{
 
             try {
@@ -66,11 +67,11 @@ class NuevoViajeActivity : AppCompatActivity() {
 
             builder.show()
             val dia = picker.dayOfMonth
-            val mes = picker.month
+            val mes = picker.month+1 //coge un mes menos
             val anyo = picker.year
 
             viaje.fechaInicio = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
-            tvFecha.text = viaje.fechaInicio
+            tvFechaEvento.text = viaje.fechaInicio
         }
 
 
@@ -121,4 +122,6 @@ class NuevoViajeActivity : AppCompatActivity() {
 
 
     }
+
+
 

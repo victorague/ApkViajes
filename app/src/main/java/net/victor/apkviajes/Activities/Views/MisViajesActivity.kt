@@ -1,11 +1,11 @@
 package net.victor.apkviajes.Activities.Views
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.activity_mis_viajes.*
 import kotlinx.android.synthetic.main.content_mis_viajes.*
 import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
 import net.victor.apkviajes.Activities.model.Viaje
+import net.victor.apkviajes.LoginActivity
 import net.victor.apkviajes.R
-import org.jetbrains.anko.toast
 
 
 class MisViajesActivity : AppCompatActivity() {
@@ -34,15 +34,21 @@ class MisViajesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_mis_viajes)
-        setSupportActionBar(toolbar)
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         showViajes()
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+
+
+        btnNuevoViaje.setOnClickListener{
+            val intent = Intent(this , NuevoViajeActivity::class.java)
+            startActivity(intent)
         }
+
+
+
+
+
     }
 
      private fun showViajes(){
@@ -54,16 +60,16 @@ class MisViajesActivity : AppCompatActivity() {
                  .get()
                  .addOnCompleteListener { task ->
                      if (task.isSuccessful) {
-                         for (i in task.result) {
-                             viaje = Viaje()
-                             Log.d("pppppp", i.id + " => " + i.data)
-                             viaje.longitud = i.data.getValue("longitud").toString()
-                             viaje.latitud = i.data.getValue("latitud").toString()
-                             viaje.fechaInicio = i.data.getValue("fechaInicio").toString()
-                             viaje.idUsuario = i.data.getValue("idUsuario").toString()
-                             viaje.lugar = i.data.getValue("lugar").toString()
-                             viaje.descripcion = i.data.getValue("descripcion").toString()
-
+                         for (document in task.result) {
+                             viaje = Viaje() //Firestore trabaja de forma asincrona, por lo que hay que declarar un nuevo viaje cada vez que empieza el nuevo bucle
+                             Log.d("pppppp", document.id + " => " + document.data)
+                             viaje.longitud = document.data.getValue("longitud").toString()
+                             viaje.latitud = document.data.getValue("latitud").toString()
+                             viaje.fechaInicio = document.data.getValue("fechaInicio").toString()
+                             viaje.idUsuario = document.data.getValue("idUsuario").toString()
+                             viaje.lugar = document.data.getValue("lugar").toString()
+                             viaje.descripcion = document.data.getValue("descripcion").toString()
+                             viaje.idViaje = document.id
 
                              viajesAL.add(viaje)
 
@@ -72,16 +78,12 @@ class MisViajesActivity : AppCompatActivity() {
                          }
 
 
-
-
-
                      } else {
                          Log.d("Mal", "Error getting documents: ", task.exception)
                      }
 
-
-                     adapter = CustomAdapterViajes(this, R.layout.row_mis_viajes, viajesAL)
                      rvMisViajes.layoutManager = LinearLayoutManager(this)
+                     adapter = CustomAdapterViajes(this, R.layout.row_mis_viajes, viajesAL)
                      rvMisViajes.adapter = adapter
 
 
@@ -89,9 +91,12 @@ class MisViajesActivity : AppCompatActivity() {
 
                  }
 
+         }
+
+
 
 
      }
 
 
-}
+

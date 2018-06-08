@@ -1,15 +1,15 @@
 package net.victor.apkviajes.Activities.adapter
 
-import android.app.AlertDialog
+import android.app.Activity
 import android.content.Context
-import android.support.design.widget.Snackbar
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.row_mis_viajes.view.*
+import net.victor.apkviajes.Activities.Views.EventosViajesActivity
 import net.victor.apkviajes.Activities.model.Viaje
-import org.jetbrains.anko.alert
 
 
 class CustomAdapterViajes(val context: Context,
@@ -44,7 +44,7 @@ class CustomAdapterViajes(val context: Context,
             // al que hay que poner los datos del objeto dataItem
             itemView.tvLugar.text = dataItem.lugar
             itemView.tvDescripcion.text = dataItem.descripcion
-            itemView.tvFecha.text = dataItem.fechaInicio
+            itemView.tvFechaEvento.text = dataItem.fechaInicio
             itemView.setOnClickListener({
                 onItemClick(dataItem)
             })
@@ -54,6 +54,11 @@ class CustomAdapterViajes(val context: Context,
 
 
     private fun onItemClick(dataItem: Viaje) {
+        val intent = Intent(context as Activity, EventosViajesActivity::class.java)
+        intent.putExtra("lugar", dataItem.lugar)
+        intent.putExtra("idUsuario", dataItem.idUsuario)
+        intent.putExtra("idViaje", dataItem.idViaje)
+        context.startActivity(intent)
 
     }
 
