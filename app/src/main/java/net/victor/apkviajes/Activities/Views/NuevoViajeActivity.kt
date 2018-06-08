@@ -5,6 +5,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.location.places.ui.PlacePicker
@@ -15,8 +17,10 @@ import net.victor.apkviajes.Activities.model.Viaje
 import net.victor.apkviajes.R
 import org.jetbrains.anko.toast
 import android.widget.DatePicker
-
-
+import kotlinx.android.synthetic.main.activity_nuevo_evento.*
+import kotlinx.android.synthetic.main.row_mis_viajes.*
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class NuevoViajeActivity : AppCompatActivity() {
@@ -35,8 +39,8 @@ class NuevoViajeActivity : AppCompatActivity() {
         mAuth = FirebaseAuth.getInstance()
 
         // Create a new user with a first and last name
-        viaje.lugar = inputLugarViaje.text.toString()
-        viaje.descripcion = inputDescripcionViaje.text.toString()
+
+        viaje.descripcion = tvDescripcionViaje.text.toString()
 
 
 
@@ -56,7 +60,7 @@ class NuevoViajeActivity : AppCompatActivity() {
             toast("Rellena todos los camposy elige ubicacion")
         }
 
-        btnFechaInicio.setOnClickListener{
+        btnElegirFechaViaje.setOnClickListener{
             val builder = AlertDialog.Builder(this)
             val picker = DatePicker(this)
 
@@ -71,11 +75,46 @@ class NuevoViajeActivity : AppCompatActivity() {
             val anyo = picker.year
 
             viaje.fechaInicio = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
-            tvFechaEvento.text = viaje.fechaInicio
+
         }
 
 
 
+        btnFechaActualViaje.setOnClickListener{
+            val sdf = SimpleDateFormat("dd-M-yyyy")
+            val currentDateandTime = sdf.format(Date())
+            viaje.fechaInicio = currentDateandTime.toString()
+            toast("Elegida fecha actual: "+viaje.fechaInicio)
+        }
+
+        /////////////////////////////COMPROBAR SI TEL TEXTO ESTA VACIO PARA HABILITAR BOTON EVENTO////////////////////////////////////
+        btnUbicacion.isEnabled = false
+
+        tvDescripcionViaje.addTextChangedListener(object : TextWatcher {
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int,
+                                       count: Int) {
+                // TODO Auto-generated method stub
+
+                if (s.toString() == "") {
+                    btnUbicacion.isEnabled = false
+                } else {
+                    btnUbicacion.isEnabled = true
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int,
+                                           after: Int) {
+                // TODO Auto-generated method stub
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                // TODO Auto-generated method stub
+
+            }
+        })
+/////////////////////////////COMPROBAR SI TEL TEXTO ESTA VACIO PARA HABILITAR BOTON EVENTO////////////////////////////////////
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
@@ -92,8 +131,8 @@ class NuevoViajeActivity : AppCompatActivity() {
         val lugar = PlacePicker.getPlace(this, data)
 
 
-        viaje.descripcion = inputDescripcionViaje.text.toString()
-        viaje.lugar = inputLugarViaje.text.toString()
+        viaje.descripcion = tvDescripcionViaje.text.toString()
+        viaje.lugar = lugar.name.toString()
         viaje.latitud = lugar.latLng.latitude.toString()
         viaje.longitud = lugar.latLng.longitude.toString()
         viaje.idUsuario = mAuth.uid.toString()
