@@ -40,7 +40,9 @@ class NuevoViajeActivity : AppCompatActivity() {
 
         // Create a new user with a first and last name
 
-        viaje.descripcion = tvDescripcionViaje.text.toString()
+        viaje.descripcion = tvDescripcionViajeNuevoViaje.text.toString()
+        viaje.creador = mAuth.currentUser?.email.toString()
+
 
 
 
@@ -76,6 +78,7 @@ class NuevoViajeActivity : AppCompatActivity() {
 
             viaje.fechaInicio = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
 
+
         }
 
 
@@ -90,7 +93,7 @@ class NuevoViajeActivity : AppCompatActivity() {
         /////////////////////////////COMPROBAR SI TEL TEXTO ESTA VACIO PARA HABILITAR BOTON EVENTO////////////////////////////////////
         btnUbicacion.isEnabled = false
 
-        tvDescripcionViaje.addTextChangedListener(object : TextWatcher {
+        tvDescripcionViajeNuevoViaje.addTextChangedListener(object : TextWatcher {
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int,
                                        count: Int) {
@@ -131,7 +134,7 @@ class NuevoViajeActivity : AppCompatActivity() {
         val lugar = PlacePicker.getPlace(this, data)
 
 
-        viaje.descripcion = tvDescripcionViaje.text.toString()
+        viaje.descripcion = tvDescripcionViajeNuevoViaje.text.toString()
         viaje.lugar = lugar.name.toString()
         viaje.latitud = lugar.latLng.latitude.toString()
         viaje.longitud = lugar.latLng.longitude.toString()
@@ -149,6 +152,11 @@ class NuevoViajeActivity : AppCompatActivity() {
                         .addOnSuccessListener { toast("Se ha creado el viaje correctamente") }
                         .addOnFailureListener { toast("Error al crear el viaje") }
                 finish()
+                val intentRestart = Intent(this, MisViajesActivity::class.java)
+                intentRestart.putExtra("idViaje", viaje.idViaje)
+                intentRestart.putExtra("uidUsuario", viaje.idUsuario)
+                startActivity(intentRestart)
+
             }else{
                 toast("¡Rellena todos los campos!")
 

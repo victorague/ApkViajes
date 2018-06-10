@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -51,7 +52,12 @@
         <activity
             android:name=".Activities.Views.NuevoEventoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Views.DetalleEventoActivity"></activity>
+        <activity android:name=".Activities.Views.DetalleEventoActivity" />
+
+        <uses-library android:name="com.google.android.maps" />
+
+        <activity android:name=".Activities.Views.BuscarViajeActivity" />
+        <activity android:name=".Activities.Views.ResultadoBusquedaActivity"></activity>
     </application>
 
 </manifest>

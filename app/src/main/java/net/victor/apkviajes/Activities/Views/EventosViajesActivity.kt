@@ -26,12 +26,15 @@ class EventosViajesActivity : AppCompatActivity() {
     private lateinit var eventosAL :ArrayList<Evento>
     private lateinit var evento:Evento
     private lateinit var idViaje : String
+    private lateinit var uidUusario : String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_eventos_viajes)
         var intent = getIntent().extras
         idViaje = intent.getString("idViaje").toString()
+        uidUusario = intent.getString("uidUsuario")
         mAuth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
         showEventos()
@@ -44,8 +47,10 @@ class EventosViajesActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-
-
+        //Solo el usuario creador poría añadir neuvos eventos a su viaje
+        if (uidUusario != mAuth.currentUser?.uid){
+            btnNuevoEvento.hide()
+        }
 
 
     }
@@ -68,6 +73,7 @@ class EventosViajesActivity : AppCompatActivity() {
                             evento.idUsuario = document.data.getValue("idUsuario").toString()
                             evento.lugar = document.data.getValue("lugar").toString()
                             evento.descripcion = document.data.getValue("descripcion").toString()
+                            evento.creador = document.data.getValue("creador").toString()
 
                             eventosAL.add(evento)
 
@@ -85,6 +91,10 @@ class EventosViajesActivity : AppCompatActivity() {
                     rvEventos.adapter = adapter
 
 
+
+                    if (eventosAL.isEmpty()){
+                        tvSinEventos.text = "Parece ser que aún no hay eventos para este viaje"
+                    }
 
 
                 }

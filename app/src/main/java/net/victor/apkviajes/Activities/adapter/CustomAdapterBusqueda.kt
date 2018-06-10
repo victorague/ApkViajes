@@ -8,17 +8,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.row_mis_viajes.view.*
-import net.victor.apkviajes.Activities.Views.EventosViajesActivity
+import net.victor.apkviajes.Activities.Views.EventosViajeBuscado
 import net.victor.apkviajes.Activities.model.Viaje
+import net.victor.apkviajes.ActivityConfirmacion
 
 
-class CustomAdapterViajes(val context: Context,
-                             val layout: Int,
-                             val dataList: List<Viaje>
-): RecyclerView.Adapter<CustomAdapterViajes.ViewHolder>() {
+class CustomAdapterBusqueda(val context: Context,
+                           val layout: Int,
+                           val dataList: List<Viaje>
+): RecyclerView.Adapter<CustomAdapterBusqueda.ViewHolder>() {
     companion object {
-        private val REQUEST_DETALLE = 0
+        private val REQUEST_DETALLE=0
     }
+
+    //private lateinit var recetaException : DatabaseError
+    //private lateinit var unit : Unit
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,7 +34,7 @@ class CustomAdapterViajes(val context: Context,
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataList[position]
-        holder.bind(item, position)
+        holder.bind(item,position)
     }
 
     override fun getItemCount(): Int {
@@ -38,31 +43,30 @@ class CustomAdapterViajes(val context: Context,
 
     inner class ViewHolder(viewlayout: View, val context: Context) : RecyclerView.ViewHolder(viewlayout) {
 
-
         fun bind(dataItem: Viaje, position: Int) {
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
-            itemView.tvLugarViaje.text = dataItem.lugar
             itemView.tvDescripcionViaje.text = dataItem.descripcion
-            itemView.tvCreador.text = dataItem.creador.toString()
             itemView.tvFechaViaje.text = dataItem.fechaInicio
+            itemView.tvLugarViaje.text = dataItem.lugar
+            itemView.tvCreador.text = dataItem.creador.toString()
             itemView.setOnClickListener({
                 onItemClick(dataItem)
             })
         }
-
     }
 
 
     private fun onItemClick(dataItem: Viaje) {
-        val intent = Intent(context as Activity, EventosViajesActivity::class.java)
+        val intent = Intent(context as Activity, EventosViajeBuscado::class.java)
         intent.putExtra("lugar", dataItem.lugar)
-        intent.putExtra("creador", dataItem.creador)
-        intent.putExtra("uidUsuario" , dataItem.idUsuario)
-        intent.putExtra("uidUsuario", dataItem.idUsuario)
+        intent.putExtra("idUsuario", dataItem.idUsuario)
         intent.putExtra("idViaje", dataItem.idViaje)
+        intent.putExtra("latitud", dataItem.latitud)
+        intent.putExtra("longitud", dataItem.longitud)
+        intent.putExtra("creador", dataItem.creador)
+        intent.putExtra("descripcion", dataItem.descripcion)
         context.startActivity(intent)
 
     }
-
 }

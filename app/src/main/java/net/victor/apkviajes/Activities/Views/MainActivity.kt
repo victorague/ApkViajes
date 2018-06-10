@@ -14,6 +14,7 @@ import org.jetbrains.anko.toast
 import android.content.Intent
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
+import net.victor.apkviajes.Activities.Views.BuscarViajeActivity
 import net.victor.apkviajes.Activities.Views.MisViajesActivity
 import net.victor.apkviajes.Activities.Views.NuevoViajeActivity
 import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
@@ -60,6 +61,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             } else {
                 toast("¡Debes estar regitrado para poder crear y ver tus viajes!")
             }
+        }
+
+        btnBuscarViaje.setOnClickListener {
+            val intent = Intent(this, BuscarViajeActivity::class.java)
+            startActivity(intent)
         }
 
 

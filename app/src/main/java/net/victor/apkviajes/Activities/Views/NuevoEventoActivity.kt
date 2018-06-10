@@ -49,6 +49,8 @@ class NuevoEventoActivity : AppCompatActivity() {
         var idViaje = intent.getString("idViaje").toString()
         evento.idViaje = idViaje
         evento.idUsuario = mAuth.currentUser!!.uid
+        evento.creador = mAuth.currentUser?.email.toString()
+
 
         // Create a new user with a first and last name
         // evento.descripcion = tvDescripcionEvento.text.toString()
@@ -94,6 +96,7 @@ class NuevoEventoActivity : AppCompatActivity() {
                 val anyo = picker.year
 
                 evento.fechaEvento = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
+
                 toast("Fecha elegida: "+evento.fechaEvento.toString())
             }
 
@@ -149,7 +152,7 @@ class NuevoEventoActivity : AppCompatActivity() {
             evento.lugar = lugar.name.toString()
             evento.latitud = lugar.latLng.latitude.toString()
             evento.longitud = lugar.latLng.longitude.toString()
-            evento.idUsuario = mAuth.uid.toString()
+            evento.idUsuario = mAuth.currentUser?.uid.toString()
 
 
 
@@ -163,9 +166,14 @@ class NuevoEventoActivity : AppCompatActivity() {
                     // Add a new document with a generated ID
                     db.collection("eventos")
                             .add(evento)
-                            .addOnSuccessListener { toast("Se ha creado el viaje correctamente") }
+                            .addOnSuccessListener { toast("Evento creado correctamente") }
                             .addOnFailureListener { toast("Error al crear el viaje") }
                     finish()
+                    val intentRestart = Intent(this, EventosViajesActivity::class.java)
+                    intentRestart.putExtra("idViaje", evento.idViaje)
+                    intentRestart.putExtra("uidUsuario", evento.idUsuario)
+
+                    startActivity(intentRestart)
                 } else {
                     toast("¡Rellena todos los campos!")
 

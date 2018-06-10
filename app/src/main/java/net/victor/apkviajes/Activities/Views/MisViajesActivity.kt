@@ -28,6 +28,8 @@ class MisViajesActivity : AppCompatActivity() {
     private lateinit var  query:QuerySnapshot
     private lateinit var viajesAL:ArrayList<Viaje>
     private lateinit var viaje:Viaje
+    private  lateinit var idViaje:String
+    private lateinit var  uidUusario:String
 
 
 
@@ -70,6 +72,7 @@ class MisViajesActivity : AppCompatActivity() {
                              viaje.lugar = document.data.getValue("lugar").toString()
                              viaje.descripcion = document.data.getValue("descripcion").toString()
                              viaje.idViaje = document.id
+                             viaje.creador = document.data.getValue("creador").toString()
 
                              viajesAL.add(viaje)
 

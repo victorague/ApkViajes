@@ -49,8 +49,8 @@ class CustomAdapterEventos(val context: Context,
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
             itemView.tvDescripcion.text = dataItem.descripcion
-            itemView.tvFecha.text = dataItem.fechaEvento
-            itemView.tvLugar.text = dataItem.lugar
+            itemView.tvFechaViaje.text = dataItem.fechaEvento
+            itemView.tvLugarViaje.text = dataItem.lugar
             itemView.setOnClickListener({
                 onItemClick(dataItem)
             })
@@ -66,6 +66,7 @@ class CustomAdapterEventos(val context: Context,
             intent.putExtra("latitud", dataItem.latitud)
             intent.putExtra("longitud", dataItem.longitud)
             intent.putExtra("descripcion", dataItem.descripcion)
+            intent.putExtra("fecha",dataItem.fechaEvento)
             context.startActivity(intent)
 
         }
