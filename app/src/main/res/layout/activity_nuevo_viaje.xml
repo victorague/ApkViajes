@@ -39,7 +39,6 @@
 
     <Button
         android:id="@+id/btnFechaActualViaje"
-        android:background="@color/transparent"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +49,6 @@
 
     <Button
         android:id="@+id/btnElegirFechaViaje"
-        android:background="@color/transparent"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -74,7 +72,6 @@
     <Button
         android:id="@+id/btnUbicacion"
         android:textColor="@color/white"
-        android:background="@color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tvUbicacionElegida"
@@ -98,7 +95,6 @@
     <Button
         android:id="@+id/btnEmpezarViaje"
         android:layout_width="236dp"
-        android:background="@color/transparent"
         android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

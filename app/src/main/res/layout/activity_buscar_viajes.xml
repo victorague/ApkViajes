@@ -40,4 +40,13 @@
         android:layout_centerInParent="true"
         android:text="Buscar" />
 
+    <TextView
+        android:id="@+id/textView9"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inputLugarBuscado"
+        android:layout_centerHorizontal="true"
+        android:text="(Cada palabra ha de empezar con una letra mayúscula)" />
+
 </RelativeLayout>

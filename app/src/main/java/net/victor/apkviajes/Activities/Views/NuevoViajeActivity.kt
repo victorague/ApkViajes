@@ -17,6 +17,7 @@ import net.victor.apkviajes.Activities.model.Viaje
 import net.victor.apkviajes.R
 import org.jetbrains.anko.toast
 import android.widget.DatePicker
+import com.google.android.gms.location.places.Place
 import kotlinx.android.synthetic.main.activity_nuevo_evento.*
 import kotlinx.android.synthetic.main.row_mis_viajes.*
 import java.text.SimpleDateFormat

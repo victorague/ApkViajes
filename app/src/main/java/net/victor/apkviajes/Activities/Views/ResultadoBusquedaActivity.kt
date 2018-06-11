@@ -43,11 +43,6 @@ class ResultadoBusquedaActivity : AppCompatActivity() {
         showViajes()
 
 
-
-
-
-
-
     }
 
     private fun showViajes(){

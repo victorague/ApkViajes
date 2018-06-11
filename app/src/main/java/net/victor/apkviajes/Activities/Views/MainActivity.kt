@@ -1,5 +1,6 @@
 package net.victor.apkviajes
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         mAuth = FirebaseAuth.getInstance()
         usuarioLogeado =  mAuth.currentUser?.email.toString()
+
 
 
 
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             tvMailMainHeader.text = "Parece ser que aún no has iniciado sesión..."
         }
 
+
         return true
     }
 
@@ -130,4 +133,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
 }

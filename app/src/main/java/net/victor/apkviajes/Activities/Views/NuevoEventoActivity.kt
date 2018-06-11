@@ -172,6 +172,7 @@ class NuevoEventoActivity : AppCompatActivity() {
                     val intentRestart = Intent(this, EventosViajesActivity::class.java)
                     intentRestart.putExtra("idViaje", evento.idViaje)
                     intentRestart.putExtra("uidUsuario", evento.idUsuario)
+                    this.finish()
 
                     startActivity(intentRestart)
                 } else {
