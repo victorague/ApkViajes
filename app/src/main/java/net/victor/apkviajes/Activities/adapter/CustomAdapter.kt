@@ -7,9 +7,17 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.row_mis_viajes.view.*
 import net.victor.apkviajes.Activities.Views.EventosViajesActivity
+import net.victor.apkviajes.Activities.Views.MisViajesActivity
+import net.victor.apkviajes.Activities.model.Evento
 import net.victor.apkviajes.Activities.model.Viaje
+import org.jetbrains.anko.alert
+import org.jetbrains.anko.noButton
+import org.jetbrains.anko.yesButton
 
 
 class CustomAdapterViajes(val context: Context,
@@ -20,6 +28,8 @@ class CustomAdapterViajes(val context: Context,
         private val REQUEST_DETALLE = 0
     }
 
+
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -49,8 +59,12 @@ class CustomAdapterViajes(val context: Context,
             itemView.setOnClickListener({
                 onItemClick(dataItem)
             })
-        }
 
+            itemView.setOnLongClickListener({
+                onLongItemClick(dataItem)
+
+            })
+        }
     }
 
 
@@ -58,11 +72,30 @@ class CustomAdapterViajes(val context: Context,
         val intent = Intent(context as Activity, EventosViajesActivity::class.java)
         intent.putExtra("lugar", dataItem.lugar)
         intent.putExtra("creador", dataItem.creador)
-        intent.putExtra("uidUsuario" , dataItem.idUsuario)
+        intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("idViaje", dataItem.idViaje)
         context.startActivity(intent)
 
     }
 
+    private fun onLongItemClick(dataItem: Viaje): Boolean {
+        mAuth = FirebaseAuth.getInstance()
+        if (mAuth.currentUser?.uid == dataItem.idUsuario) {
+            var db = FirebaseFirestore.getInstance()
+            context.alert("¿Quieres eliminar este evento?") {
+                title = "Confirm"
+                yesButton {
+                    db.collection("viajes").document(dataItem.idViaje).delete()
+
+                }
+                noButton { }
+            }.show()
+
+            return true
+        } else {
+            return false
+        }
+
+    }
 }

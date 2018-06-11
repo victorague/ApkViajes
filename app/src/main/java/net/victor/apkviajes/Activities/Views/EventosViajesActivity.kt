@@ -74,6 +74,8 @@ class EventosViajesActivity : AppCompatActivity() {
                             evento.lugar = document.data.getValue("lugar").toString()
                             evento.descripcion = document.data.getValue("descripcion").toString()
                             evento.creador = document.data.getValue("creador").toString()
+                            evento.idEvento = document.id
+
 
                             eventosAL.add(evento)
 

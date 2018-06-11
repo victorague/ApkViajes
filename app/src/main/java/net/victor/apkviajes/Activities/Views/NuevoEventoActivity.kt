@@ -175,6 +175,7 @@ class NuevoEventoActivity : AppCompatActivity() {
                     this.finish()
 
                     startActivity(intentRestart)
+                    finish()
                 } else {
                     toast("¡Rellena todos los campos!")
 
