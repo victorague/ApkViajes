@@ -102,7 +102,14 @@ class EventosViajesActivity : AppCompatActivity() {
 
     }
 
-
+    override fun onRestart() {
+        super.onRestart()
+        eventosAL.clear()
+        if (eventosAL.isEmpty()){
+            tvSinEventos.text = "Parece ser que aún no hay eventos para este viaje"
+        }
+        showEventos()
+    }
 
 
 }

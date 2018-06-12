@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import org.jetbrains.anko.toast
 import android.content.Intent
+import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
 import net.victor.apkviajes.Activities.Views.BuscarViajeActivity
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var usuarioLogeado:String
+    private lateinit var viewMenu:NavigationView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         mAuth = FirebaseAuth.getInstance()
         usuarioLogeado =  mAuth.currentUser?.email.toString()
 
+        viewMenu = findViewById<View>(R.id.nav_view) as NavigationView
+        val nav_Menu = viewMenu.getMenu()
+
+        if(mAuth.currentUser != null){
+            nav_Menu.findItem(R.id.nav_login).setVisible(false)
+            nav_Menu.findItem(R.id.nav_register).setVisible(false)
+
+        }else if(mAuth.currentUser == null){
+            nav_Menu.findItem(R.id.nav_logout).setVisible(false)
+        }
 
 
 

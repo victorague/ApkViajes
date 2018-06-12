@@ -40,6 +40,7 @@ class NuevoViajeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_nuevo_viaje)
         mAuth = FirebaseAuth.getInstance()
 
+
         // Create a new user with a first and last name
 
         viaje.descripcion = tvDescripcionViajeNuevoViaje.text.toString()
@@ -151,10 +152,11 @@ class NuevoViajeActivity : AppCompatActivity() {
                         .addOnSuccessListener { toast("Se ha creado el viaje correctamente") }
                         .addOnFailureListener { toast("Error al crear el viaje") }
                 finish()
+                /*
                 val intentRestart = Intent(this, MisViajesActivity::class.java)
                 intentRestart.putExtra("idViaje", viaje.idViaje)
                 intentRestart.putExtra("uidUsuario", viaje.idUsuario)
-                startActivity(intentRestart)
+                startActivity(intentRestart) */
 
             }else{
                 toast("¡Rellena todos los campos!")

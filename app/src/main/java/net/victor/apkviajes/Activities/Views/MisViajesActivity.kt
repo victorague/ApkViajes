@@ -97,7 +97,11 @@ class MisViajesActivity : AppCompatActivity() {
          }
 
 
-
+    override fun onRestart() {
+        super.onRestart()
+        viajesAL.clear()
+        showViajes()
+    }
 
      }
 

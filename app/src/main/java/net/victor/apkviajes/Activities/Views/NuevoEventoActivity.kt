@@ -162,13 +162,8 @@ class NuevoEventoActivity : AppCompatActivity() {
                             .addOnSuccessListener { toast("Evento creado correctamente") }
                             .addOnFailureListener { toast("Error al crear el viaje") }
                     finish()
-                    val intentRestart = Intent(this, EventosViajesActivity::class.java)
-                    intentRestart.putExtra("idViaje", evento.idViaje)
-                    intentRestart.putExtra("uidUsuario", evento.idUsuario)
-                    this.finish()
 
-                    startActivity(intentRestart)
-                    finish()
+
                 } else {
                     toast("¡Rellena todos los campos!")
 

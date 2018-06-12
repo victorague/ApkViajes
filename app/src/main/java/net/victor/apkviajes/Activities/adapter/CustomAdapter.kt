@@ -75,7 +75,6 @@ class CustomAdapterViajes(val context: Context,
         intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("idViaje", dataItem.idViaje)
-        context.finish()
         context.startActivity(intent)
 
     }
