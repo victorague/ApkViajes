@@ -75,6 +75,7 @@ class CustomAdapterViajes(val context: Context,
         intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("idViaje", dataItem.idViaje)
+        context.finish()
         context.startActivity(intent)
 
     }
@@ -87,6 +88,7 @@ class CustomAdapterViajes(val context: Context,
                 title = "Confirm"
                 yesButton {
                     db.collection("viajes").document(dataItem.idViaje).delete()
+
 
                 }
                 noButton { }

@@ -1,12 +1,10 @@
 package net.victor.apkviajes.Activities.Views
 
-import android.app.ActionBar
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.widget.DatePicker
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
@@ -16,15 +14,15 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_nuevo_evento.*
 import net.victor.apkviajes.Activities.model.Evento
-import net.victor.apkviajes.Activities.model.Viaje
 import net.victor.apkviajes.R
-import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
-import org.jetbrains.anko.uiThread
 import java.text.SimpleDateFormat
 import java.util.*
 import android.text.Editable
 import android.text.TextWatcher
+import android.app.DatePickerDialog
+
+
 
 
 
@@ -61,7 +59,7 @@ class NuevoEventoActivity : AppCompatActivity() {
             btnFechaActualEvento.setOnClickListener {
                 val sdf = SimpleDateFormat("dd-M-yyyy")
                 val currentDateandTime = sdf.format(Date())
-                evento.fechaEvento = currentDateandTime.toString()
+                evento.fechaEvento = currentDateandTime
                 toast("Elegida fecha actual: "+evento.fechaEvento)
             }
 
@@ -82,22 +80,17 @@ class NuevoEventoActivity : AppCompatActivity() {
             }
 
             btnElegirFechaEvento.setOnClickListener {
-                val builder = AlertDialog.Builder(this)
-                val picker = DatePicker(this)
+                val calendar = Calendar.getInstance()
+                val dateFormatter = SimpleDateFormat("dddd-MM-yyyy", Locale.US)
+                val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                    val newDate = Calendar.getInstance()
+                    newDate.set(year, monthOfYear, dayOfMonth)
+                    evento.fechaEvento = dayOfMonth.toString() + "-" + (monthOfYear+1).toString() + "-" + year.toString()
+                    print(dateFormatter.format(newDate.time))
+                }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
 
-                builder.setTitle("Fecha Inicio")
-                builder.setView(picker)
-                builder.setNegativeButton("Cancel", null)
-                builder.setPositiveButton("Set", null)
+                datePickerDialog.show()
 
-                builder.show()
-                val dia = picker.dayOfMonth
-                val mes = picker.month + 1 //coge un mes menos
-                val anyo = picker.year
-
-                evento.fechaEvento = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
-
-                toast("Fecha elegida: "+evento.fechaEvento.toString())
             }
 
 

@@ -111,21 +111,34 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when (item.itemId) {
             R.id.nav_login -> {
 
-                val intent = Intent(this , LoginActivity::class.java)
-                startActivity(intent)
+                if(mAuth.currentUser == null){
+                    val intent = Intent(this , LoginActivity::class.java)
+                    startActivity(intent)
+                }
+                else{toast("¡Ya está logueado!")}
+
             }
+
+
             R.id.nav_register -> {
-                val intent = Intent(this , RegisterActivity::class.java)
-                startActivity(intent)
+                if(mAuth.currentUser == null){
+                    val intent = Intent(this , RegisterActivity::class.java)
+                    startActivity(intent)
+                }else{toast("por favor, cierre sesión antes de crear una nueva cuenta")}
+
             }
+
             R.id.nav_logout -> {
-                alert("¿Quieres cerrar la sesion?", "Cerrar Sesion") {
-                    positiveButton("Si") {
-                        mAuth.signOut()
-                        recreate()
-                    }
-                    negativeButton("No") { }
-                }.show()
+                if(mAuth.currentUser != null){
+                    alert("¿Quieres cerrar la sesion?", "Cerrar Sesion") {
+                        positiveButton("Si") {
+                            mAuth.signOut()
+                            recreate()
+                        }
+                        negativeButton("No") { }
+                    }.show()
+                } else {toast("¡Debes estar logueado!")}
+
             }
 
         }

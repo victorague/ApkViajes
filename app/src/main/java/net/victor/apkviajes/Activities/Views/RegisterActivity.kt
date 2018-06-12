@@ -44,20 +44,33 @@ class RegisterActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
 
         fun register() {
-            this.mAuth.createUserWithEmailAndPassword(emailRegister.text.toString(), passwordRegister.text.toString()).addOnCompleteListener { task: Task<AuthResult> ->
-            if (task.isSuccessful) {
-                toast("Usuario Registrado Correctamente")
-                val firebaseUser = mAuth.currentUser!!
-                // Si se crea la cuenta correctamente, abrimos la activity de confirmacion que se loguee
-                firebaseUser.sendEmailVerification()
-                val intent = Intent(this , ActivityConfirmacion::class.java)
-                startActivity(intent)
-                finish()
+            if(emailRegister.text.toString() != "" && emailConfirmar.text.toString() != "" && passwordRegister.text.toString() != "" && passwordRepeat.text.toString() != ""){
+                if(emailRegister.text.toString() == emailConfirmar.text.toString() && passwordRegister.text.toString() == passwordRepeat.text.toString()){
 
-            } else {
-                toast("Error al registrar el nuevo usuario")
+                    this.mAuth.createUserWithEmailAndPassword(emailRegister.text.toString(), passwordRegister.text.toString()).addOnCompleteListener { task: Task<AuthResult> ->
+                        if (task.isSuccessful) {
+                            toast("Usuario Registrado Correctamente")
+                            val firebaseUser = mAuth.currentUser!!
+                            // Si se crea la cuenta correctamente, abrimos la activity de confirmacion que se loguee
+                            firebaseUser.sendEmailVerification()
+                            val intent = Intent(this , ActivityConfirmacion::class.java)
+                            startActivity(intent)
+                            finish()
+
+                        } else {
+                            toast(task.exception?.localizedMessage.toString())
+                            //toast("Error al registrar el nuevo usuario")
+                        }
+                    }
+                }else{
+                    toast("Asegurese de que coinciden tanto la contraseña como el email")
+                }
+            }else{
+                toast("Rellene todos los campos")
             }
-        }
+
+
+
 
     }
         btnRegistro.setOnClickListener{

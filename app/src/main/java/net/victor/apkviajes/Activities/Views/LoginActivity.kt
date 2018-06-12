@@ -45,24 +45,27 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
 
         fun login(){
-            mAuth.signInWithEmailAndPassword(tvEmailLogin.text.toString(), tvPasswordLogin.text.toString()).addOnCompleteListener { task: Task<AuthResult> ->
+            if(tvEmailLogin.text.toString() != "" && tvPasswordLogin.text.toString() != ""){
+                mAuth.signInWithEmailAndPassword(tvEmailLogin.text.toString(), tvPasswordLogin.text.toString()).addOnCompleteListener { task: Task<AuthResult> ->
 
-                if (task.isSuccessful()) {
-                    // Sign in success, update UI with the signed-in user's information
+                    if (task.isSuccessful()) {
+                        // Sign in success, update UI with the signed-in user's information
                         Log.d("Login", "signInWithEmail:success")
-                    toast("Usuario logueado correctamente")
-                    val firebaseUser = mAuth.currentUser
-                    val intent = Intent(this , MainActivity::class.java)
-                    intent.putExtra("firebaseUser",  firebaseUser.toString())
-                    startActivity(intent)
-                    finish()
-                } else {
-                    // If sign in fails, display a message to the user.
-                    toast("Error al loguear")
-                }
+                        toast("Usuario logueado correctamente")
+                        val firebaseUser = mAuth.currentUser
+                        val intent = Intent(this , MainActivity::class.java)
+                        intent.putExtra("firebaseUser",  firebaseUser.toString())
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        toast(task.exception?.localizedMessage.toString())
+                    }
 
-                // ...
-            }
+                    // ...
+                }
+            }else{toast("Rellene todos los campos")}
+
+
 
         }
 

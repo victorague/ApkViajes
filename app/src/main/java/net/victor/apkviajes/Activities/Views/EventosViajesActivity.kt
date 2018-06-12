@@ -10,7 +10,6 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_eventos_viajes.*
-import kotlinx.android.synthetic.main.content_mis_viajes.*
 import net.victor.apkviajes.Activities.model.Evento
 import net.victor.apkviajes.R
 import net.victor.apkviajes.Activities.adapter.CustomAdapterEventos
@@ -42,7 +41,7 @@ class EventosViajesActivity : AppCompatActivity() {
 
 
         btnNuevoEvento.setOnClickListener{
-                val intent = Intent(this , NuevoEventoActivity::class.java)
+            val intent = Intent(this , NuevoEventoActivity::class.java)
             intent.putExtra("idViaje", idViaje)
             startActivity(intent)
         }
@@ -60,7 +59,7 @@ class EventosViajesActivity : AppCompatActivity() {
         eventosAL =  ArrayList()
 
         db.collection("eventos")
-                .whereEqualTo("idViaje", idViaje)
+                .whereEqualTo("idViaje", idViaje).orderBy("fechaEvento")
                 .get()
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {

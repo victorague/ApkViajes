@@ -2,6 +2,7 @@ package net.victor.apkviajes.Activities.Views
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -64,20 +65,17 @@ class NuevoViajeActivity : AppCompatActivity() {
         }
 
         btnElegirFechaViaje.setOnClickListener{
-            val builder = AlertDialog.Builder(this)
-            val picker = DatePicker(this)
+            val calendar = Calendar.getInstance()
+            val dateFormatter = SimpleDateFormat("dddd-MM-yyyy", Locale.US)
+            val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                val newDate = Calendar.getInstance()
+                newDate.set(year, monthOfYear, dayOfMonth)
+                viaje.fechaInicio = dayOfMonth.toString() + "-" + (monthOfYear+1).toString() + "-" + year.toString()
+                print(dateFormatter.format(newDate.time))
+            }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
 
-            builder.setTitle("Fecha Inicio")
-            builder.setView(picker)
-            builder.setNegativeButton("Cancel", null)
-            builder.setPositiveButton("Set", null)
+            datePickerDialog.show()
 
-            builder.show()
-            val dia = picker.dayOfMonth
-            val mes = picker.month+1 //coge un mes menos
-            val anyo = picker.year
-
-            viaje.fechaInicio = dia.toString() + '-' + mes.toString() + '-' + anyo.toString()
 
 
         }
