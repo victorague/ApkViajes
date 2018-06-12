@@ -139,7 +139,6 @@ class NuevoViajeActivity : AppCompatActivity() {
         viaje.latitud = lugar.latLng.latitude.toString()
         viaje.longitud = lugar.latLng.longitude.toString()
         viaje.idUsuario = mAuth.uid.toString()
-        tvUbicacionElegida.text = lugar.name.toString()
 
 
 
