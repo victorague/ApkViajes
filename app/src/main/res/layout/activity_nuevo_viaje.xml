@@ -73,13 +73,14 @@
 
     <Button
         android:id="@+id/btnUbicacion"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:layout_above="@+id/tvUbicacionElegida"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Ubicacion" />
+        android:layout_marginBottom="192dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Ubicacion"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView8"
@@ -105,19 +106,5 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
         android:text="Empezar Viaje" />
-
-    <TextView
-        android:id="@+id/tvUbicacionElegida"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"
-        android:shadowColor="@color/white"
-        android:textColorLink="@color/white"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="207dp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

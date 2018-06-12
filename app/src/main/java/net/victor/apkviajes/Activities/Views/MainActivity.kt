@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setSupportActionBar(toolbar)
         mAuth = FirebaseAuth.getInstance()
         usuarioLogeado =  mAuth.currentUser?.email.toString()
+        var isVerified = mAuth.currentUser?.isEmailVerified
 
         viewMenu = findViewById<View>(R.id.nav_view) as NavigationView
         val nav_Menu = viewMenu.getMenu()
@@ -60,18 +61,37 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
         btnNuevoViaje.setOnClickListener{
-            if(mAuth.currentUser != null){
+            if(mAuth.currentUser != null && isVerified == true){
                 val intent = Intent(this , NuevoViajeActivity::class.java)
                 startActivity(intent)
+            }else if(mAuth != null && isVerified == false){
+                alert("Debes verificar tu direccion de correo", "Verificacion de correo") {
+                    positiveButton("Ya lo he verificado") {
+                        var intent = Intent(this.ctx , LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                        mAuth.signOut()
+
+
+
+                    }
+                    negativeButton("Vuelve a enviarme el correo") {
+                        mAuth.currentUser?.sendEmailVerification()
+                        toast("Por favor, compruebe su bandeja de entrada")
+                    }
+                }.show()
+
             }else{
                 toast("¡Debes estar registrado para poder crear tu propio viaje!")
             }
         }
 
         btnMisViajes.setOnClickListener {
-            if (mAuth.currentUser != null) {
+            if (mAuth.currentUser != null && isVerified == true) {
                 val intent = Intent(this, MisViajesActivity::class.java)
                 startActivity(intent)
+            }else if(mAuth != null && isVerified == false){
+                toast("¡Debes confirmar tu cuenta antes de poder crear y ver tus viajes!. Comprueba la bandeja de entrada de tu correo electrónico.")
             } else {
                 toast("¡Debes estar regitrado para poder crear y ver tus viajes!")
             }
@@ -144,11 +164,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if(mAuth.currentUser != null){
                     alert("¿Quieres cerrar la sesion?", "Cerrar Sesion") {
                         positiveButton("Si") {
-                            mAuth.signOut()
                             recreate()
+                            mAuth.signOut()
+
                         }
                         negativeButton("No") { }
                     }.show()
+
                 } else {toast("¡Debes estar logueado!")}
 
             }

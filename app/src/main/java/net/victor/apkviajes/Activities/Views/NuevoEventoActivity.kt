@@ -163,7 +163,6 @@ class NuevoEventoActivity : AppCompatActivity() {
                             .addOnFailureListener { toast("Error al crear el viaje") }
                     finish()
 
-
                 } else {
                     toast("¡Rellena todos los campos!")
 
@@ -171,6 +170,7 @@ class NuevoEventoActivity : AppCompatActivity() {
 
             }
         }
+
 
 
     }

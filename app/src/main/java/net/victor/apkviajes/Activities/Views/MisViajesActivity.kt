@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import kotlinx.android.synthetic.main.activity_eventos_viajes.*
 import kotlinx.android.synthetic.main.activity_mis_viajes.*
 import kotlinx.android.synthetic.main.content_mis_viajes.*
 import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
@@ -90,7 +91,9 @@ class MisViajesActivity : AppCompatActivity() {
                      rvMisViajes.adapter = adapter
 
 
-
+                     if (viajesAL.isEmpty()){
+                         tvSinEventos.text = "Parece ser que aun no hay viajes a este destino"
+                     }
 
                  }
 
@@ -101,8 +104,17 @@ class MisViajesActivity : AppCompatActivity() {
         super.onRestart()
         viajesAL.clear()
         showViajes()
+
     }
 
+
+    override fun onPause() {
+        super.onPause()
+    }
+
+    override fun onStop() {
+        super.onStop()
+    }
      }
 
 
