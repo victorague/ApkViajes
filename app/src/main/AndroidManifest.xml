@@ -57,7 +57,9 @@
         <uses-library android:name="com.google.android.maps" />
 
         <activity android:name=".Activities.Views.BuscarViajeActivity" />
-        <activity android:name=".Activities.Views.ResultadoBusquedaActivity"></activity>
+        <activity android:name=".Activities.Views.ResultadoBusquedaActivity" />
+        <activity android:name=".Activities.Views.BuscarViajeUsuarioActivity" />
+        <activity android:name=".Activities.Views.ViajesUsuarioActivity"></activity>
     </application>
 
 </manifest>

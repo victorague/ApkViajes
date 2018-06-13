@@ -1,5 +1,6 @@
 package net.victor.apkviajes.Activities.Views
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
@@ -54,6 +55,7 @@ class MisViajesActivity : AppCompatActivity() {
 
     }
 
+     @SuppressLint("SetTextI18n")
      private fun showViajes(){
 
          viajesAL =  ArrayList()
@@ -92,7 +94,9 @@ class MisViajesActivity : AppCompatActivity() {
 
 
                      if (viajesAL.isEmpty()){
-                         tvSinEventos.text = "Parece ser que aun no hay viajes a este destino"
+                         tvSinEventos.text = "Parece ser que aun no hay viajes"
+                     }else{
+                         tvSinEventos.text = ""
                      }
 
                  }

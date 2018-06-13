@@ -17,6 +17,7 @@ import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
 import net.victor.apkviajes.Activities.Views.BuscarViajeActivity
+import net.victor.apkviajes.Activities.Views.BuscarViajeUsuarioActivity
 import net.victor.apkviajes.Activities.Views.MisViajesActivity
 import net.victor.apkviajes.Activities.Views.NuevoViajeActivity
 import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
@@ -121,22 +122,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             tvMailMainHeader.text = usuarioLogeado
         }
         if(mAuth.currentUser == null){
-            tvMailMainHeader.text = "Parece ser que aún no has iniciado sesión..."
+            //tvMailMainHeader.text = "Parece ser que aún no has iniciado sesión... -> Deshabilitado porque creaba crashes en algunos dispositivos"
         }
 
 
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
@@ -173,6 +166,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 } else {toast("¡Debes estar logueado!")}
 
+            }
+
+            R.id.nav_amigos -> {
+                val intent = Intent(this , BuscarViajeUsuarioActivity::class.java)
+                startActivity(intent)
             }
 
         }

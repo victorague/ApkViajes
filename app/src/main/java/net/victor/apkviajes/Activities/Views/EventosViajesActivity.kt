@@ -1,5 +1,6 @@
 package net.victor.apkviajes.Activities.Views
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_eventos_viajes.*
+import kotlinx.android.synthetic.main.activity_mis_viajes.*
 import net.victor.apkviajes.Activities.model.Evento
 import net.victor.apkviajes.R
 import net.victor.apkviajes.Activities.adapter.CustomAdapterEventos
@@ -54,6 +56,7 @@ class EventosViajesActivity : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun showEventos(){
 
         eventosAL =  ArrayList()
@@ -94,7 +97,9 @@ class EventosViajesActivity : AppCompatActivity() {
 
 
                     if (eventosAL.isEmpty()){
-                        tvSinEventos.text = "Parece ser que aún no hay eventos para este viaje"
+                        tvNoEventos.text = "Parece ser que aún no hay eventos para este viaje"
+                    } else{
+                        tvNoEventos.text = ""
                     }
 
 

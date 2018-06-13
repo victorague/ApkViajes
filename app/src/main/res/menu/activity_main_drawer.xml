@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+
+       <item android:title="Usuario">
+           <menu>
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_login"
@@ -18,20 +20,27 @@
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
             android:title="Logout" />
+           </menu>
+       </item>
 
-    </group>
 
-    <item android:title="Communicate">
+    <item android:title="Explora">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_amigos"
+                android:icon="@drawable/places_ic_search"
+                android:title="Busca los viajes de alguien" />
+
         </menu>
     </item>
 
+    <item android:title="Info">
+        <menu>
+            <item
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_info"
+                android:title="Info" />
+
+        </menu>
+    </item>
 </menu>

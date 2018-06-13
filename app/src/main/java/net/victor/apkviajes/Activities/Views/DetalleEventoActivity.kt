@@ -40,7 +40,7 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong , 5F))
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong , 7F))
 
 
         //informacion sobre elementos del mapa https://developers.google.com/maps/documentation/android-api/views?hl=es-419
