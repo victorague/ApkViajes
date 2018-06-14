@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.row_evento.view.*
 import net.victor.apkviajes.Activities.Views.DetalleEventoActivity
+import net.victor.apkviajes.Activities.Views.EventosViajesActivity
+import net.victor.apkviajes.Activities.Views.MisViajesActivity
 import net.victor.apkviajes.Activities.model.Evento
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
@@ -91,6 +93,8 @@ class CustomAdapterEventos(val context: Context,
                 title = "Confirm"
                 yesButton {
                     db.collection("eventos").document(dataItem.idEvento).delete()
+                    (context as EventosViajesActivity).recreate()
+
 
                 }
                 noButton { }

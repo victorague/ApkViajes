@@ -10,6 +10,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_eventos_viajes.*
 import kotlinx.android.synthetic.main.activity_mis_viajes.*
@@ -61,7 +62,7 @@ class MisViajesActivity : AppCompatActivity() {
          viajesAL =  ArrayList()
 
          db.collection("viajes")
-                 .whereEqualTo("idUsuario", mAuth.currentUser!!.uid)
+                 .whereEqualTo("idUsuario", mAuth.currentUser!!.uid).orderBy("fechaInicio",Query.Direction.DESCENDING)
                  .get()
                  .addOnCompleteListener { task ->
                      if (task.isSuccessful) {

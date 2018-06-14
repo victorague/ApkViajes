@@ -11,13 +11,18 @@
     <Button
         android:id="@+id/btnBuscarViaje"
         android:layout_width="wrap_content"
+        android:background="@drawable/botones_main"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:textColor="@color/white"
         android:text="Buscar Viajes" />
 
     <Button
         android:id="@+id/btnNuevoViaje"
         android:layout_width="wrap_content"
+        android:background="@drawable/botones_main"
+        android:textColor="@color/white"
+
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -26,6 +31,9 @@
 
     <Button
         android:id="@+id/btnMisViajes"
+        android:background="@drawable/botones_main"
+        android:textColor="@color/white"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

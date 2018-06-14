@@ -57,7 +57,7 @@ class NuevoEventoActivity : AppCompatActivity() {
 
 
             btnFechaActualEvento.setOnClickListener {
-                val sdf = SimpleDateFormat("dd-M-yyyy")
+                val sdf = SimpleDateFormat("yyyy-M-dd")
                 val currentDateandTime = sdf.format(Date())
                 evento.fechaEvento = currentDateandTime
                 toast("Elegida fecha actual: "+evento.fechaEvento)
@@ -85,7 +85,7 @@ class NuevoEventoActivity : AppCompatActivity() {
                 val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                     val newDate = Calendar.getInstance()
                     newDate.set(year, monthOfYear, dayOfMonth)
-                    evento.fechaEvento = dayOfMonth.toString() + "-" + (monthOfYear+1).toString() + "-" + year.toString()
+                    evento.fechaEvento =  year.toString() + "-" + (monthOfYear+1).toString() + "-" + dayOfMonth.toString() //month +1 porque datepicker coge el mes con un numero menos
                     print(dateFormatter.format(newDate.time))
                 }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
 

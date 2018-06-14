@@ -87,6 +87,7 @@ class CustomAdapterViajes(val context: Context,
                 title = "Confirm"
                 yesButton {
                     db.collection("viajes").document(dataItem.idViaje).delete()
+                    (context as MisViajesActivity).recreate()
 
 
                 }

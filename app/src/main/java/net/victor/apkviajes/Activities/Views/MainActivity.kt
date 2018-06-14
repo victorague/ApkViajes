@@ -16,10 +16,7 @@ import android.content.Intent
 import android.view.View
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
-import net.victor.apkviajes.Activities.Views.BuscarViajeActivity
-import net.victor.apkviajes.Activities.Views.BuscarViajeUsuarioActivity
-import net.victor.apkviajes.Activities.Views.MisViajesActivity
-import net.victor.apkviajes.Activities.Views.NuevoViajeActivity
+import net.victor.apkviajes.Activities.Views.*
 import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
 import org.jetbrains.anko.alert
 
@@ -173,6 +170,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
 
+            R.id.nav_info -> {
+                val intent = Intent(this , InfoActivity::class.java)
+                startActivity(intent)
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)

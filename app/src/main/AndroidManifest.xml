@@ -13,9 +13,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ico_apk"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ico_apk"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <meta-data
@@ -59,7 +59,8 @@
         <activity android:name=".Activities.Views.BuscarViajeActivity" />
         <activity android:name=".Activities.Views.ResultadoBusquedaActivity" />
         <activity android:name=".Activities.Views.BuscarViajeUsuarioActivity" />
-        <activity android:name=".Activities.Views.ViajesUsuarioActivity"></activity>
+        <activity android:name=".Activities.Views.ViajesUsuarioActivity" />
+        <activity android:name=".Activities.Views.InfoActivity"></activity>
     </application>
 
 </manifest>

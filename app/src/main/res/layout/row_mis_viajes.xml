@@ -15,6 +15,7 @@
 
         <TextView
             android:id="@+id/tvLugarViaje"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -23,6 +24,7 @@
 
         <TextView
             android:id="@+id/tvFechaViaje"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvLugarViaje"
@@ -45,6 +47,7 @@
             android:layout_alignParentTop="true"
             android:layout_alignStart="@+id/tvDescripcion"
             android:layout_marginTop="128dp"
+            android:textStyle="bold"
             android:text="Creado por:"
             tools:text="Creado por:" />
 

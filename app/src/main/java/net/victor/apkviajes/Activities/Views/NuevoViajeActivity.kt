@@ -71,7 +71,7 @@ class NuevoViajeActivity : AppCompatActivity() {
             val datePickerDialog = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
                 val newDate = Calendar.getInstance()
                 newDate.set(year, monthOfYear, dayOfMonth)
-                viaje.fechaInicio = dayOfMonth.toString() + "-" + (monthOfYear+1).toString() + "-" + year.toString()
+                viaje.fechaInicio = year.toString() + "-" + (monthOfYear+1).toString() + "-" + dayOfMonth.toString() //month +1 porque datepicker coge el mes con un numero menos
                 print(dateFormatter.format(newDate.time))
             }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH))
 
@@ -84,7 +84,7 @@ class NuevoViajeActivity : AppCompatActivity() {
 
 
         btnFechaActualViaje.setOnClickListener{
-            val sdf = SimpleDateFormat("dd-M-yyyy")
+            val sdf = SimpleDateFormat("yyyy-M-dd")
             val currentDateandTime = sdf.format(Date())
             viaje.fechaInicio = currentDateandTime.toString()
             toast("Elegida fecha actual: "+viaje.fechaInicio)

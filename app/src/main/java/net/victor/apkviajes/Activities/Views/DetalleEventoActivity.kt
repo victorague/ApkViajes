@@ -10,6 +10,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detalle_evento.*
 import net.victor.apkviajes.R
+import android.view.MotionEvent
+
+
 
 
 class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -40,12 +43,13 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong , 7F))
+        map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong , 9F))
 
 
         //informacion sobre elementos del mapa https://developers.google.com/maps/documentation/android-api/views?hl=es-419
 
     }
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,7 +62,9 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
 
+
     }
+
 
     }
 

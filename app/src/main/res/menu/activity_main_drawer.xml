@@ -9,17 +9,17 @@
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_login"
-            android:title="Login" />
+            android:title="Iniciar Sesión" />
 
         <item
             android:id="@+id/nav_register"
             android:icon="@drawable/ic_register"
-            android:title="Registrar" />
+            android:title="Crear Cuenta" />
 
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
-            android:title="Logout" />
+            android:title="Cerrar Sesión" />
            </menu>
        </item>
 
@@ -29,7 +29,7 @@
             <item
                 android:id="@+id/nav_amigos"
                 android:icon="@drawable/places_ic_search"
-                android:title="Busca los viajes de alguien" />
+                android:title="Buscar viajes de un usuario" />
 
         </menu>
     </item>
