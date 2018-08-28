@@ -4,32 +4,32 @@
     tools:showIn="navigation_view">
 
 
-       <item android:title="Usuario">
+       <item android:title="@string/usuario">
            <menu>
         <item
             android:id="@+id/nav_login"
             android:icon="@drawable/ic_login"
-            android:title="Iniciar Sesión" />
+            android:title="@string/iniciarsesion" />
 
         <item
             android:id="@+id/nav_register"
             android:icon="@drawable/ic_register"
-            android:title="Crear Cuenta" />
+            android:title="@string/crear_cuenta" />
 
         <item
             android:id="@+id/nav_logout"
             android:icon="@drawable/ic_logout"
-            android:title="Cerrar Sesión" />
+            android:title="@string/cerrar_sesion" />
            </menu>
        </item>
 
 
-    <item android:title="Explora">
+    <item android:title="@string/explora">
         <menu>
             <item
                 android:id="@+id/nav_amigos"
                 android:icon="@drawable/places_ic_search"
-                android:title="Buscar viajes de un usuario" />
+                android:title="@string/buscar_viajes_usuario" />
 
         </menu>
     </item>
@@ -39,7 +39,7 @@
             <item
                 android:id="@+id/nav_info"
                 android:icon="@drawable/ic_info"
-                android:title="Info" />
+                android:title="@string/info" />
 
         </menu>
     </item>

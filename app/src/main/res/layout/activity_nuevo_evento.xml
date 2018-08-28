@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:ems="10"
-        android:hint="¡Cuéntanos qué has hecho!"
+        android:hint="@string/que_has_hecho"
         android:inputType="textMultiLine" />
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="204dp"
-        android:text="FECHA" />
+        android:text="@string/fecha" />
 
     <Button
         android:id="@+id/btnFechaActualEvento"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@+id/textView5"
-        android:text="FECHA ACTUAL" />
+        android:text="@string/fecha_actual" />
 
     <Button
         android:id="@+id/btnElegirFechaEvento"
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnFechaActualEvento"
         android:layout_toEndOf="@+id/textView5"
-        android:text="ELEGIR FECHA" />
+        android:text="@string/elegir_fecha" />
 
     <TextView
         android:id="@+id/textView5"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnUbicacionEvento"
         android:layout_centerHorizontal="true"
-        android:text="UBICACION" />
+        android:text="@string/ubicacion" />
 
     <Button
         android:id="@+id/btnUbicacionEvento"
@@ -58,7 +58,24 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="150dp"
-        android:text="Ubicacion" />
+        android:text="@string/ubicacion" />
+
+    <TextView
+        android:id="@+id/tvConsejo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnUbicacionEvento"
+        android:layout_marginTop="-150dp"
+        android:background="#8888"
+        android:gravity="center"
+        android:shadowColor="@color/white"
+        android:text="¡Asegúrese de haber rellenado el campo descripión y fecha antes de elegir ubicación!"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white"
+        android:textStyle="italic" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnCrearEvento"
@@ -69,6 +86,6 @@
         android:layout_marginBottom="18dp"
         android:layout_marginEnd="18dp"
         android:clickable="true"
-        app:srcCompat="@drawable/ic_menu_send" />
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

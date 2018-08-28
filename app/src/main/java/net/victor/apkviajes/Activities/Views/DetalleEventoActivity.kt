@@ -1,5 +1,4 @@
 package net.victor.apkviajes.Activities.Views
-
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -10,9 +9,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_detalle_evento.*
 import net.victor.apkviajes.R
-import android.view.MotionEvent
-
-
+import org.jetbrains.anko.indeterminateProgressDialog
 
 
 class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -22,6 +19,8 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
     override fun onMapReady(map: GoogleMap?) {
+        var dialog = indeterminateProgressDialog("Cargando evento...")
+        dialog.show()
         var intent = getIntent().extras
         var latitud  = intent.getString("latitud")
         var longitud = intent.getString("longitud")
@@ -44,7 +43,7 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         map?.moveCamera(CameraUpdateFactory.newLatLngZoom(latlong , 9F))
-
+        dialog.cancel()
 
         //informacion sobre elementos del mapa https://developers.google.com/maps/documentation/android-api/views?hl=es-419
 
@@ -56,8 +55,8 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detalle_evento)
         var intent = getIntent().extras
-         var latitud  = intent.getString("latitud")
-         var longitud = intent.getString("longitud")
+        var latitud  = intent.getString("latitud")
+        var longitud = intent.getString("longitud")
         val mapFragment = fragmentManager
                 .findFragmentById(R.id.map) as MapFragment
         mapFragment.getMapAsync(this)
@@ -66,7 +65,4 @@ class DetalleEventoActivity : AppCompatActivity(), OnMapReadyCallback {
     }
 
 
-    }
-
-
-
+}

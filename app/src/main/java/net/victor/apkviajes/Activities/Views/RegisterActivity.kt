@@ -1,18 +1,15 @@
 package net.victor.apkviajes
 
-import android.support.v7.app.AppCompatActivity
 import android.app.LoaderManager.LoaderCallbacks
 import android.content.Intent
 import android.content.Loader
 import android.database.Cursor
 import android.os.Bundle
-
+import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
-
-import kotlinx.android.synthetic.main.activity_register.*
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.activity_confirmacion.*
+import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.toast
 
 
@@ -49,7 +46,7 @@ class RegisterActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
                     this.mAuth.createUserWithEmailAndPassword(emailRegister.text.toString(), passwordRegister.text.toString()).addOnCompleteListener { task: Task<AuthResult> ->
                         if (task.isSuccessful) {
-                            toast("Usuario Registrado Correctamente")
+                            toast(R.string.usuario_registrado)
                             val firebaseUser = mAuth.currentUser!!
                             // Si se crea la cuenta correctamente, abrimos la activity de confirmacion que se loguee
                             firebaseUser.sendEmailVerification()
@@ -63,10 +60,10 @@ class RegisterActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                         }
                     }
                 }else{
-                    toast("Asegurese de que coinciden tanto la contraseña como el email")
+                    toast(R.string.asegurese_coinciden)
                 }
             }else{
-                toast("Rellene todos los campos")
+                toast(R.string.rellene_campos)
             }
 
 

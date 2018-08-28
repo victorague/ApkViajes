@@ -1,12 +1,13 @@
 package net.victor.apkviajes.Activities.Views
 
 import android.app.Activity
-import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
-import android.widget.DatePicker
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.location.places.ui.PlacePicker
@@ -18,12 +19,6 @@ import net.victor.apkviajes.R
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
 import java.util.*
-import android.text.Editable
-import android.text.TextWatcher
-import android.app.DatePickerDialog
-
-
-
 
 
 class NuevoEventoActivity : AppCompatActivity() {
@@ -60,7 +55,7 @@ class NuevoEventoActivity : AppCompatActivity() {
                 val sdf = SimpleDateFormat("yyyy-M-dd")
                 val currentDateandTime = sdf.format(Date())
                 evento.fechaEvento = currentDateandTime
-                toast("Elegida fecha actual: "+evento.fechaEvento)
+                toast("Elegida fecha actual")
             }
 
 
@@ -76,7 +71,7 @@ class NuevoEventoActivity : AppCompatActivity() {
             }
 
             btnCrearEvento.setOnClickListener {
-                toast("Rellena todos los campos y elige ubicacion")
+                toast(R.string.rellene_campos_ubicacion)
             }
 
             btnElegirFechaEvento.setOnClickListener {
@@ -150,21 +145,21 @@ class NuevoEventoActivity : AppCompatActivity() {
 
 
             btnCrearEvento.setOnClickListener {
-                Log.d("descripcion", evento.descripcion)
-                Log.d("lugar", evento.lugar)
-                Log.d("Latitud", evento.latitud)
-                Log.d("Longitud", evento.longitud)
-                Log.d("fecha", evento.fechaEvento)
+               // Log.d("descripcion", evento.descripcion)
+               // Log.d("lugar", evento.lugar)
+               // Log.d("Latitud", evento.latitud)
+               // Log.d("Longitud", evento.longitud)
+               // Log.d("fecha", evento.fechaEvento)
                 if (evento.descripcion != "" && evento.lugar != "" && evento.latitud != "" && evento.longitud != "" && evento.fechaEvento != "") /*SOlo latitud porque siempre coge al mismo timepo longitud y latitud)*/ {
                     // Add a new document with a generated ID
                     db.collection("eventos")
                             .add(evento)
-                            .addOnSuccessListener { toast("Evento creado correctamente") }
-                            .addOnFailureListener { toast("Error al crear el viaje") }
+                            .addOnSuccessListener { toast(R.string.evento_creado) }
+                            .addOnFailureListener { toast(R.string.error_crear_evento) }
                     finish()
 
                 } else {
-                    toast("¡Rellena todos los campos!")
+                    toast(R.string.rellene_campos)
 
                 }
 

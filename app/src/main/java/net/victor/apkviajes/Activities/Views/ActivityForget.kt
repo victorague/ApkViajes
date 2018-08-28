@@ -1,7 +1,7 @@
 package net.victor.apkviajes
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Patterns
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_forget.*
@@ -24,16 +24,16 @@ class ActivityForget : AppCompatActivity() {
 
         btnRestablecimiento.setOnClickListener{
             if(inputEmailForget.text.toString() == null) {
-                toast("Intruduzca una dirección de correo electrónico")
+                    toast(R.string.introduzca_correo)
             }
             else if(!Patterns.EMAIL_ADDRESS.matcher(inputEmailForget.text.toString()).matches()){
-                toast("¡El formato del correco electrónico no es válido!")
+                toast(R.string.formato_no_valido)
             }
 
             else{
                 direccion = inputEmailForget.text.toString()
                 mAuth.sendPasswordResetEmail(direccion)
-                toast("En breves recibirá el correo para restablecer su contraseña")
+                toast(R.string.breve_recibir)
                 finish()
 
             }

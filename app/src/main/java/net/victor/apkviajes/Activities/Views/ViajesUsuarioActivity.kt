@@ -1,9 +1,8 @@
 package net.victor.apkviajes.Activities.Views
 
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
@@ -84,7 +83,7 @@ class ViajesUsuarioActivity : AppCompatActivity() {
 
 
                     if (viajesAL.isEmpty()){
-                        tvSinEventos.text = "El usuario " +usuarioBuscado +" no existe o aún no ha creado viajes"
+                        tvSinEventos.text = R.string.el_usuario.toString() +usuarioBuscado + R.string.no_existe_o_no_viajes
                     }else{
                         tvSinEventos.text = ""
                     }

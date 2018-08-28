@@ -1,18 +1,15 @@
 package net.victor.apkviajes
 
-import android.support.v7.app.AppCompatActivity
 import android.app.LoaderManager.LoaderCallbacks
+import android.content.Intent
 import android.content.Loader
 import android.database.Cursor
 import android.os.Bundle
-
-import android.content.Intent
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.toast
 
@@ -51,7 +48,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
                     if (task.isSuccessful()) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("Login", "signInWithEmail:success")
-                        toast("Usuario logueado correctamente")
+                        toast(R.string.logim_correcto)
                         val firebaseUser = mAuth.currentUser
                         val intent = Intent(this , MainActivity::class.java)
                         intent.putExtra("firebaseUser",  firebaseUser.toString())
@@ -63,7 +60,7 @@ class LoginActivity : AppCompatActivity(), LoaderCallbacks<Cursor> {
 
                     // ...
                 }
-            }else{toast("Rellene todos los campos")}
+            }else{toast(R.string.rellene_campos)}
 
 
 

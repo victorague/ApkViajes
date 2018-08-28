@@ -11,42 +11,34 @@
     <Button
         android:id="@+id/btnBuscarViaje"
         android:layout_width="wrap_content"
-        android:background="@drawable/botones_main"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:textColor="@color/white"
-        android:text="Buscar Viajes" />
+        android:background="@drawable/botones_main"
+        android:text="@string/buscarviajes"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnNuevoViaje"
         android:layout_width="wrap_content"
-        android:background="@drawable/botones_main"
-        android:textColor="@color/white"
-
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="129dp"
-        android:text="Nuevo Viaje" />
+        android:background="@drawable/botones_main"
+        android:text="@string/nuevoviaje"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnMisViajes"
-        android:background="@drawable/botones_main"
-        android:textColor="@color/white"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="133dp"
-        android:text="Mis viajes" />
-
-    <TextView
-        android:id="@+id/tvUsuarioConectado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp" />
+        android:background="@drawable/botones_main"
+        android:text="@string/misviajes"
+        android:textColor="@color/white" />
 
 </RelativeLayout>

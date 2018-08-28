@@ -1,6 +1,6 @@
 package net.victor.apkviajes
 
-import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -8,17 +8,15 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import org.jetbrains.anko.toast
-import android.content.Intent
-import android.view.View
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.nav_header_main.*
 import net.victor.apkviajes.Activities.Views.*
-import net.victor.apkviajes.Activities.adapter.CustomAdapterViajes
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.toast
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -63,8 +61,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this , NuevoViajeActivity::class.java)
                 startActivity(intent)
             }else if(mAuth != null && isVerified == false){
-                alert("Debes verificar tu direccion de correo", "Verificacion de correo") {
-                    positiveButton("Ya lo he verificado") {
+                alert(getString(R.string.debes_verificar_correo), getString(R.string.titulo_verificacion_correo)) {
+                    positiveButton(R.string.ya_he_verificado) {
                         var intent = Intent(this.ctx , LoginActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -73,14 +71,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
                     }
-                    negativeButton("Vuelve a enviarme el correo") {
+                    negativeButton(R.string.vuelve_enviar_correo) {
                         mAuth.currentUser?.sendEmailVerification()
-                        toast("Por favor, compruebe su bandeja de entrada")
+                        toast(R.string.compruebe_bandeja)
                     }
                 }.show()
 
             }else{
-                toast("¡Debes estar registrado para poder crear tu propio viaje!")
+                toast(R.string.debes_registrar_viaje)
             }
         }
 
@@ -89,9 +87,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val intent = Intent(this, MisViajesActivity::class.java)
                 startActivity(intent)
             }else if(mAuth != null && isVerified == false){
-                toast("¡Debes confirmar tu cuenta antes de poder crear y ver tus viajes!. Comprueba la bandeja de entrada de tu correo electrónico.")
+                toast(R.string.verificar_comprueba_bandeja)
             } else {
-                toast("¡Debes estar regitrado para poder crear y ver tus viajes!")
+                toast(R.string.debes_reegistrar_verycrer)
             }
         }
 
@@ -137,7 +135,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     val intent = Intent(this , LoginActivity::class.java)
                     startActivity(intent)
                 }
-                else{toast("¡Ya está logueado!")}
+                else{toast(R.string.ya_logeaado)}
 
             }
 
@@ -146,22 +144,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if(mAuth.currentUser == null){
                     val intent = Intent(this , RegisterActivity::class.java)
                     startActivity(intent)
-                }else{toast("por favor, cierre sesión antes de crear una nueva cuenta")}
+                }else{toast(R.string.porfavor_cierre_sesion)}
 
             }
 
             R.id.nav_logout -> {
                 if(mAuth.currentUser != null){
-                    alert("¿Quieres cerrar la sesion?", "Cerrar Sesion") {
-                        positiveButton("Si") {
+                    alert(getString(R.string.quieres_cerrar), getString(R.string.cerrar_sesion)) {
+                        positiveButton(R.string.si) {
                             recreate()
                             mAuth.signOut()
 
                         }
-                        negativeButton("No") { }
+                        negativeButton(R.string.no) { }
                     }.show()
 
-                } else {toast("¡Debes estar logueado!")}
+                } else {toast(R.string.debes_estar_logeado)}
 
             }
 

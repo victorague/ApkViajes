@@ -1,11 +1,8 @@
 package net.victor.apkviajes.Activities.Views
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_detalle_evento.*
+import android.support.v7.app.AppCompatActivity
 import net.victor.apkviajes.R
-import android.text.method.ScrollingMovementMethod
-
 
 
 class InfoActivity : AppCompatActivity() {

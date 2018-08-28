@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Activities.Views.MisViajesActivity">
 
-    <include layout="@layout/content_mis_viajes" />
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_mis_viajes" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnNuevoViaje"

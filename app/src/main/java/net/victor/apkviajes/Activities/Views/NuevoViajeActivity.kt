@@ -1,7 +1,6 @@
 package net.victor.apkviajes.Activities.Views
 
 import android.app.Activity
-import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -17,10 +16,6 @@ import kotlinx.android.synthetic.main.activity_nuevo_viaje.*
 import net.victor.apkviajes.Activities.model.Viaje
 import net.victor.apkviajes.R
 import org.jetbrains.anko.toast
-import android.widget.DatePicker
-import com.google.android.gms.location.places.Place
-import kotlinx.android.synthetic.main.activity_nuevo_evento.*
-import kotlinx.android.synthetic.main.row_mis_viajes.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -62,7 +57,7 @@ class NuevoViajeActivity : AppCompatActivity() {
         }
 
         btnEmpezarViaje.setOnClickListener {
-            toast("Rellena todos los camposy elige ubicacion")
+            toast(R.string.rellene_campos_ubicacion)
         }
 
         btnElegirFechaViaje.setOnClickListener{
@@ -87,7 +82,7 @@ class NuevoViajeActivity : AppCompatActivity() {
             val sdf = SimpleDateFormat("yyyy-M-dd")
             val currentDateandTime = sdf.format(Date())
             viaje.fechaInicio = currentDateandTime.toString()
-            toast("Elegida fecha actual: "+viaje.fechaInicio)
+            toast("Elegida fecha actual")
         }
 
         /////////////////////////////COMPROBAR SI TEL TEXTO ESTA VACIO PARA HABILITAR BOTON EVENTO////////////////////////////////////
@@ -148,8 +143,8 @@ class NuevoViajeActivity : AppCompatActivity() {
                 // Add a new document with a generated ID
                 db.collection("viajes")
                         .add(viaje)
-                        .addOnSuccessListener { toast("Se ha creado el viaje correctamente") }
-                        .addOnFailureListener { toast("Error al crear el viaje") }
+                        .addOnSuccessListener { toast(R.string.viaje_creado) }
+                        .addOnFailureListener { toast(R.string.error_crear_viaje) }
                 finish()
                 /*
                 val intentRestart = Intent(this, MisViajesActivity::class.java)
@@ -158,7 +153,7 @@ class NuevoViajeActivity : AppCompatActivity() {
                 startActivity(intentRestart) */
 
             }else{
-                toast("¡Rellena todos los campos!")
+                toast(R.string.rellene_campos)
 
             }
 

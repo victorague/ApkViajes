@@ -39,7 +39,7 @@
                     android:id="@+id/tvEmailLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -54,7 +54,7 @@
                     android:id="@+id/tvPasswordLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Login"
+                android:text="@string/login"
                 android:textStyle="bold" />
 
             <Button
@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="¿Se te ha olvidado la contraseña?"
+                android:text="@string/olvido_contraseña"
                 android:textStyle="bold" />
 
         </LinearLayout>

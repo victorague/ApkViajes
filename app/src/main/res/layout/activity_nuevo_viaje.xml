@@ -12,64 +12,64 @@
         android:layout_width="287dp"
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"
-        android:shadowColor="@color/white"
-        android:textColorLink="@color/white"
-        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp"
         android:ems="10"
-        android:hint="¡Cuéntanos una breve descripción del viaje!"
-        android:inputType="textMultiLine" />
+        android:hint="@string/descripcion_viaje"
+        android:inputType="textMultiLine"
+        android:shadowColor="@color/white"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white" />
 
     <TextView
         android:id="@+id/textView"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"
-        android:shadowColor="@color/white"
-        android:textColorLink="@color/white"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="170dp"
-        android:text="FECHA" />
+        android:shadowColor="@color/white"
+        android:text="@string/fecha"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white" />
 
     <Button
         android:id="@+id/btnFechaActualViaje"
-        android:textColor="@color/white"
-        android:background="@color/colorPrimaryDark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="198dp"
         android:layout_toStartOf="@+id/textView4"
-        android:text="Fecha Actual" />
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/fecha_actual"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnElegirFechaViaje"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
-        android:background="@color/colorPrimaryDark"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btnFechaActualViaje"
         android:layout_toEndOf="@+id/textView4"
-        android:text="ELEGIR FECHA" />
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/elegir_fecha"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/textView4"
-        android:textColorHint="@color/white"
-        android:textColorHighlight="@color/white"
-        android:shadowColor="@color/white"
-        android:textColorLink="@color/white"
-        android:textColor="@color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_weight="1"
-        android:text="UBICACION" />
+        android:shadowColor="@color/white"
+        android:text="@string/ubicacion"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white" />
 
     <Button
         android:id="@+id/btnUbicacion"
@@ -79,8 +79,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="192dp"
         android:background="@color/colorPrimaryDark"
-        android:text="Ubicacion"
+        android:text="@string/ubicacion"
         android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tvConsejo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="153dp"
+        android:background="#8888"
+        android:gravity="center"
+        android:shadowColor="@color/white"
+        android:text="¡Asegúrese de haber rellenado el campo descripión y fecha antes de elegir ubicación!"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorHint="@color/white"
+        android:textColorLink="@color/white"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/textView8"
@@ -99,12 +116,13 @@
     <Button
         android:id="@+id/btnEmpezarViaje"
         android:layout_width="236dp"
-        android:textColor="@color/white"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimaryDark"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:text="Empezar Viaje" />
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/empezar_viaje"
+        android:textColor="@color/white"
+        tools:text="@string/empezar_viaje" />
 
 </RelativeLayout>

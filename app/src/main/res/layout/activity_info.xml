@@ -13,7 +13,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
-        android:text="¡Muchas gracias por usar nuestra aplicacion!" />
+        android:text="@string/gracias" />
 
     <TextView
         android:id="@+id/textView11"
@@ -23,7 +23,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="70dp"
         android:gravity="center"
-        android:text="Si tienes sugerencias sobre la aplicación, ideas, preguntas, por favor, no dudes en ponerte en contacto con nosotros a través de la siguiente dirección de correo electrónico:" />
+        android:text="@string/sugerencias" />
 
     <TextView
         android:id="@+id/textView12"
@@ -32,7 +32,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="220dp"
-        android:text="¡Que tengas un buen viaje!" />
+        android:text="@string/buen_viaje" />
 
     <TextView
         android:id="@+id/textView13"
@@ -40,5 +40,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView11"
         android:layout_centerHorizontal="true"
-        android:text="victorague@gmail.com" />
+        android:text="@string/contacto" />
 </RelativeLayout>

@@ -7,13 +7,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.row_mis_viajes.view.*
 import net.victor.apkviajes.Activities.Views.EventosViajesActivity
 import net.victor.apkviajes.Activities.Views.MisViajesActivity
-import net.victor.apkviajes.Activities.model.Evento
 import net.victor.apkviajes.Activities.model.Viaje
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
@@ -71,10 +69,14 @@ class CustomAdapterViajes(val context: Context,
     private fun onItemClick(dataItem: Viaje) {
         val intent = Intent(context as Activity, EventosViajesActivity::class.java)
         intent.putExtra("lugar", dataItem.lugar)
+        intent.putExtra("fecha", dataItem.fechaInicio)
         intent.putExtra("creador", dataItem.creador)
         intent.putExtra("uidUsuario", dataItem.idUsuario)
         intent.putExtra("uidUsuario", dataItem.idUsuario)
+        intent.putExtra("longitud", dataItem.longitud)
+        intent.putExtra("latitud", dataItem.latitud)
         intent.putExtra("idViaje", dataItem.idViaje)
+        intent.putExtra("descripcion", dataItem.descripcion)
         context.startActivity(intent)
 
     }

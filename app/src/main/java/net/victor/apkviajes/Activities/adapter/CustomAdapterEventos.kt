@@ -19,9 +19,6 @@ import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
 
 
-/**
- * Created by diurno on 19/02/2018.
- */
 class CustomAdapterEventos(val context: Context,
                      val layout: Int,
                      val dataList: List<Evento>
