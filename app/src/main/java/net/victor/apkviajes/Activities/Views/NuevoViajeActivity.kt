@@ -134,6 +134,9 @@ class NuevoViajeActivity : AppCompatActivity() {
         viaje.latitud = lugar.latLng.latitude.toString()
         viaje.longitud = lugar.latLng.longitude.toString()
         viaje.idUsuario = mAuth.uid.toString()
+        val sdf = SimpleDateFormat("yyyy-M-dd")
+        val currentDateandTime = sdf.format(Date())
+        viaje.fechaCreacion = currentDateandTime.toString()
 
 
 

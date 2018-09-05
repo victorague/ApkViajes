@@ -98,7 +98,7 @@ class MisViajesActivity : AppCompatActivity() {
 
 
                      if (viajesAL.isEmpty()){
-                         tvSinEventos.text = "Parece ser que aún no hay viajes a "+viaje.lugar
+                         tvSinEventos.text = "Parece ser que aún no has creado ningun viaje"
                      }else{
                          tvSinEventos.text = ""
                      }

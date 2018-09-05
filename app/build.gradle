@@ -10,8 +10,8 @@ android {
         applicationId "net.victor.apkviajes"
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.2.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -42,6 +42,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:11.8.0'
 
 
+    implementation 'com.android.support:gridlayout-v7:27.1.1'
 }
 
 apply plugin: 'com.google.gms.google-services'

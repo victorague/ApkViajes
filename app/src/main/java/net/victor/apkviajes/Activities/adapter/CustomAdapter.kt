@@ -16,6 +16,10 @@ import net.victor.apkviajes.Activities.model.Viaje
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.noButton
 import org.jetbrains.anko.yesButton
+import android.support.v4.content.ContextCompat.startActivity
+import android.content.Intent.getIntent
+
+
 
 
 class CustomAdapterViajes(val context: Context,
@@ -89,7 +93,8 @@ class CustomAdapterViajes(val context: Context,
                 title = "Confirm"
                 yesButton {
                     db.collection("viajes").document(dataItem.idViaje).delete()
-                    (context as MisViajesActivity).recreate()
+                    (context as Activity).recreate()
+                    //(context as MisViajesActivity).recreate()
 
 
                 }

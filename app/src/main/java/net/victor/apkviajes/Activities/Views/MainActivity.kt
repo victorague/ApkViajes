@@ -98,6 +98,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             startActivity(intent)
         }
 
+        btnViajesRecientes.setOnClickListener {
+            val intent = Intent(this, ActivityRecientes::class.java)
+            startActivity(intent)
+
+
+        }
 
 
     }

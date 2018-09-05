@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="net.victor.apkviajes">
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
@@ -10,7 +9,6 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
@@ -28,48 +26,87 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".RegisterActivity"
             android:label="@string/title_activity_register" />
-        <activity android:name=".ActivityConfirmacion" />
-        <activity android:name=".ActivityForget" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".ActivityConfirmacion" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".ActivityForget" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".Activities.Views.NuevoViajeActivity"
             android:label="@string/title_activity_nuevo_viaje"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".Activities.Views.MisViajesActivity"
             android:label="@string/title_activity_mis_viajes"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Views.EventosViajesActivity" />
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.EventosViajesActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".Activities.Views.NuevoEventoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Views.DetalleEventoActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.DetalleEventoActivity" />
 
         <uses-library android:name="com.google.android.maps" />
 
-        <activity android:name=".Activities.Views.BuscarViajeActivity" />
-        <activity android:name=".Activities.Views.ResultadoBusquedaActivity" />
-        <activity android:name=".Activities.Views.BuscarViajeUsuarioActivity" />
-        <activity android:name=".Activities.Views.ViajesUsuarioActivity" />
-        <activity android:name=".Activities.Views.InfoActivity"></activity>
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.BuscarViajeActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.ResultadoBusquedaActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.BuscarViajeUsuarioActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.ViajesUsuarioActivity" />
+        <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:name=".Activities.Views.InfoActivity" />
+        <activity
+
             android:name=".Activities.model.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name"
-            >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.Views.ActivityRecientes"></activity>
     </application>
 
 </manifest>

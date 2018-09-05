@@ -6,39 +6,101 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
+
     tools:showIn="@layout/app_bar_main">
 
-    <Button
+
+    <ImageButton
         android:id="@+id/btnBuscarViaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@drawable/botones_main"
-        android:text="@string/buscarviajes"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btnNuevoViaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="93dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="61dp"
+        android:layout_marginTop="105dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/round_search_black_48" />
 
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="129dp"
-        android:background="@drawable/botones_main"
-        android:text="@string/nuevoviaje"
-        android:textColor="@color/white" />
-
-    <Button
-        android:id="@+id/btnMisViajes"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="93dp"
         android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnBuscarViaje"
+        android:layout_below="@+id/btnBuscarViaje"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Buscar Viaje" />
 
+    <ImageButton
+        android:id="@+id/btnNuevoViaje"
+        android:layout_width="93dp"
+        android:layout_height="90dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/btnBuscarViaje"
+        android:layout_marginEnd="61dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/round_add_location_black_48" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="93dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnNuevoViaje"
+        android:layout_below="@+id/btnBuscarViaje"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Crear VIaje" />
+
+    <ImageButton
+        android:id="@+id/btnMisViajes"
+        android:layout_width="93dp"
+        android:layout_height="90dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="133dp"
-        android:background="@drawable/botones_main"
-        android:text="@string/misviajes"
-        android:textColor="@color/white" />
+        android:layout_alignStart="@+id/btnBuscarViaje"
+        android:layout_marginBottom="171dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/round_person_black_48" />
 
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="93dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnBuscarViaje"
+        android:layout_below="@+id/btnMisViajes"
+        android:layout_marginTop="-171dp"
+        android:gravity="center"
+        android:text="Mis Viajes"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/btnViajesRecientes"
+        android:layout_width="93dp"
+        android:layout_height="90dp"
+        android:layout_alignStart="@+id/btnNuevoViaje"
+        android:layout_alignTop="@+id/btnMisViajes"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:scaleType="fitCenter"
+        app:srcCompat="@mipmap/round_new_releases_black_48" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="93dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/btnNuevoViaje"
+        android:layout_below="@+id/btnMisViajes"
+        android:layout_marginTop="-171dp"
+        android:gravity="center"
+        android:text="Viajes Recientes"
+        android:textColor="@color/white"
+        android:textStyle="bold" />
 </RelativeLayout>
